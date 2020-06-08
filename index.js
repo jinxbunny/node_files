@@ -1,7 +1,8 @@
 const express = require ('express');
-const app = express ();
+const getQuote = require ('./lib/getquote');
 const path = require ('path');
-const hbs = require('express-handlebars');
+const hbs = require ('express-handlebars');
+const app = express ();
 
 app.use(express.static(path.join(__dirname, 'public')));
 
@@ -12,10 +13,14 @@ app.engine('hbs', hbs({
     partialsDir: path.join(__dirname, 'views', 'partials')
 }));
 
+app.set('views',path.join(__dirname, 'views'));
+
 app.set('view engine', '.hbs');
 
 app.get('/', async(req, res) => {
-    res.render ('index');
+    let data = await getQuote();
+    let quote = data.quote;
+    res.renderx('index', {quote});
 });
 
 app.get('/*', (req, res) => {
