@@ -16,7 +16,7 @@
     "fetch": "^1.1.0",
     "handlebar": "^1.0.0",
     "handlebars": "^4.7.6",
-    "node-fetch": "^2.6.0",
+    "node-fetch": "^2.6.7",
     "path": "^0.12.7"
   }
 }
